@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function zatudans()
+    {
+        return $this->hasMany(Zatudan::class);
+    }
+    
+    public function katanas()
+    {
+        return $this->hasMany(Katana::class);
+    }
 }
