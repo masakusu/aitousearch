@@ -36,4 +36,64 @@ class User extends Authenticatable
     {
         return $this->hasMany(Katana::class);
     }
+    
+    public function favorites()
+    {
+        return $this->belongsToMany(Katana::class, 'favorites', 'user_id', 'katana_id')->withTimestamps();
+    }
+    
+    public function favorite($katanaId)
+    {
+        
+        $exist = $this->is_favorites($katanaId);
+    
+        if ($exist) {
+            return false;
+        } else {
+            $this->favorites()->attach($katanaId);
+            return true;
+        }
+    }
+    
+    public function unfavorite($katanaId)
+    {
+        $exist = $this->is_favorites($katanaId);
+    
+        if ($exist) {
+            $this->favorites()->detach($katanaId);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function goods()
+    {
+        return $this->belongsToMany(Zatudan::class, 'favorites', 'user_id', 'zatudan_id')->withTimestamps();
+    }
+    
+    public function good($zatudanId)
+    {
+        
+        $exist = $this->is_goods($zatudanId);
+    
+        if ($exist) {
+            return false;
+        } else {
+            $this->goods()->attach($zatudanId);
+            return true;
+        }
+    }
+    
+    public function ungood($zatudanId)
+    {
+        $exist = $this->is_goods($zatudanId);
+    
+        if ($exist) {
+            $this->goods()->detach($zatudanId);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
