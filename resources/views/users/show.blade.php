@@ -13,11 +13,10 @@
             </div>
         </aside>
         <div class="col-sm-8">
-            <ul class="nav nav-tabs nav-justified mb-3">
-                <li class="nav-item"><a href="#" class="nav-link">TimeLine</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Followings</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
-            </ul>
+            {!! link_to_route('tasks.create', '新規タスクの投稿', null, ['class' => 'btn btn-primary']) !!}
+            {!! link_to_route('tasks.create', '新規タスクの投稿', null, ['class' => 'btn btn-primary']) !!}
+            {!! link_to_route('tasks.create', '新規タスクの投稿', null, ['class' => 'btn btn-primary']) !!}
+            {!! link_to_route('tasks.create', '新規タスクの投稿', null, ['class' => 'btn btn-primary']) !!}
         </div>
     </div>
 @endsection
