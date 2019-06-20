@@ -1,23 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <aside class="col-sm-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">{{ $user->name }}</h3>
+<ul class="list-unstyled">
+    @foreach ($katanas as $katana)
+        <li class="media mb-3">
+            <img class="mr-2 rounded" src="{{ Gravatar::src($katana->user->email, 50) }}" alt="">
+            <div class="media-body">
+                <div>
+                    {!! link_to_route('zatudans.show', $zatudan->user->name, ['id' => $zatudan->user->id]) !!} <span class="text-muted">posted at {{ $zatudan->created_at }}</span>
                 </div>
-                <div class="card-body">
-                    <img class="rounded img-fluid" src="{{ Gravatar::src($user->email, 500) }}" alt="">
+                <div>
+                    <p class="mb-0">{!! nl2br(e($zatudan->content)) !!}</p>
                 </div>
+                @include('goods.goods_button', ['user' => $user])
             </div>
-        </aside>
-        <div class="col-sm-8">
-            <ul class="nav nav-tabs nav-justified mb-3">
-                <li class="nav-item"><a href="{{ route('users.show', ['id' => $user->id]) }}" class="nav-link {{ Request::is('users/' . $user->id) ? 'active' : '' }}">TimeLine <span class="badge badge-secondary">{{ $count_microposts }}</span></a></li>
-                <li class="nav-item"><a href="{{ route('users.favorites', ['id' => $user->id]) }}" class="nav-link {{ Request::is('users/*/favorites') ? 'active' : '' }}">Favorites <span class="badge badge-secondary">{{ $count_favorites }}</span></a></li>
-            </ul>
-            @include('zatudans.zatudans', ['zatudans' => $zatudans])
-        </div>
-    </div>
+        </li>
+    @endforeach
+</ul>
+{{ $zatudans->render('pagination::bootstrap-4') }}
 @endsection
