@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Zatudan;
+
 class ZatudansController extends Controller
 {
     public function index()
@@ -19,7 +21,16 @@ class ZatudansController extends Controller
             ];
         }
         
-        return view('welcome', $data);
+        return view('zatudans.index', $data);
+    }
+    
+    public function create()
+    {
+        $zatudan = new Zatudan;
+
+        return view('zatudans.create', [
+            'zatudan' => $zatudan,
+        ]);
     }
     
     public function store(Request $request)
@@ -27,12 +38,13 @@ class ZatudansController extends Controller
         $this->validate($request, [
             'content' => 'required|max:191',
         ]);
+        
+        $zatudan = new Zatudan;
+        $zatudan->user_id = \Auth::user()->id;
+        $zatudan->content = $request->content;
+        $zatudan->save();
 
-        $request->user()->zatudans()->create([
-            'content' => $request->content,
-        ]);
-
-        return back();
+        return redirect('/');
     }
     
     public function destroy($id)

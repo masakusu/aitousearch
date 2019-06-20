@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Katana;
+
 class KatanasController extends Controller
 {
     public function index()
@@ -28,6 +30,15 @@ class KatanasController extends Controller
         return view('katanas.history');
     }
     
+    public function create()
+    {
+        $katana = new Katana;
+
+        return view('katanas.create', [
+            'katana' => $katana,
+        ]);
+    }
+    
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -36,13 +47,14 @@ class KatanasController extends Controller
             'content' => 'required|max:191',
         ]);
 
-        $request->user()->katanas()->create([
-            'name' => $request->name,
-            'feature' => $request->feature,
-            'content' => $request->content,
-        ]);
+        $katana = new Katana;
+        $katana->user_id = \Auth::user()->id;
+        $katana->name = $request->name;
+        $katana->feature = $request->feature;
+        $katana->content = $request->content;
+        $katana->save();
 
-        return back();
+        return redirect('/');
     }
     
     public function destroy($id)
