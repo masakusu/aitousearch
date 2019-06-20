@@ -9,6 +9,14 @@
                 <div>
                     <p class="mb-0">{!! nl2br(e($zatudan->content)) !!}</p>
                 </div>
+                <div>
+                    @if (Auth::id() == $zatudan->user_id)
+                        {!! Form::open(['route' => ['zatudans.destroy', $zatudan->id], 'method' => 'delete']) !!}
+                            {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
+                        {!! Form::close() !!}
+                    @endif
+                </div>
+                @include('goods.goods_button', ['user' => $user])
             </div>
         </li>
     @endforeach

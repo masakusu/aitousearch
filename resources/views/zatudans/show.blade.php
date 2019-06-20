@@ -6,11 +6,7 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>id</th>
-            <td>{{ $zatudan->id }}</td>
-        </tr>
-        <tr>
-            <th>雑談</th>
+            <th>投稿した雑談</th>
             <td>{{ $zatudan->content }}</td>
         </tr>
     </table>

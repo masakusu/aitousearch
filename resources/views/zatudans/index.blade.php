@@ -8,15 +8,17 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>id</th>
+                    <th>投稿ユーザー</th>
                     <th>内容</th>
+                    <th>評価</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($zatudans as $zatudan)
                 <tr>
-                    <td>{!! link_to_route('zatudans.show', $zatudan->id, ['id' => $zatudan->id]) !!}</td>
+                    <td>{{ $zatudan->user }}</td>
                     <td>{{ $zatudan->content }}</td>
+                    <td>@include('goods.goods_button', ['user' => $user])</td>
                 </tr>
                 @endforeach
             </tbody>
