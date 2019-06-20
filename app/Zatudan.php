@@ -12,4 +12,9 @@ class Zatudan extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function good_users()
+    {
+        return $this->belongsToMany(User::class, 'goods', 'user_id', 'zatudan_id')->withTimestamps();
+    }
 }

@@ -4,7 +4,6 @@
 
     <h1>日本刀一覧</h1>
 
-    @if (count($katanas) > 0)
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -21,7 +20,6 @@
                 @endforeach
             </tbody>
         </table>
-    @endif
-    {!! link_to_route('katanas.create', '日本刀の投稿', null, ['class' => 'btn btn-primary']) !!}
+        {!! link_to_route('katanas.create', '日本刀の投稿', null, ['class' => 'btn btn-primary']) !!}
 
 @endsection
