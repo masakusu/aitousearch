@@ -7,8 +7,13 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
+Route::get('/', 'ZatudansController@index');
+Route::get('/', 'KatanasController@index');
+
+Route::resource('zatudans', 'ZatudansController');
+Route::resource('katanas', 'KatanasController');
+
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     
     Route::group(['prefix' => 'users/{id}'], function () {
         Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
@@ -25,8 +30,4 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('ungood', 'GoodsController@destroy')->name('goods.ungood');
     });
 
-    Route::get('/', 'ZatudansController@index');
-    Route::resource('zatudans', 'ZatudansController');
-    Route::get('/', 'KatanasController@index');
-    Route::resource('katanas', 'KatanasController');
 });
