@@ -7,8 +7,6 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
-Route::get('/', 'ZatudansController@index');
-Route::get('/', 'KatanasController@index');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
@@ -30,7 +28,8 @@ Route::group(['middleware' => ['auth']], function () {
     });
     
     Route::resource('zatudans', 'ZatudansController', ['only' => ['index', 'show', 'create', 'edit', 'store', 'destroy']]);
-    Route::resource('katanas', 'KatanasController', ['only' => ['index', 'show', 'create', 'edit', 'store', 'destroy']]);
-    Route::get('history','KatanasController@history')->name('katanas.history');
-
+    Route::resource('katanas', 'KatanasController', ['only' => ['index', 'history', 'show', 'create', 'edit', 'store', 'destroy']]);
+    
+    Route::get('history', 'KatanasController@history')->name('katanas.history');
+    Route::get('/', 'UsersController@welcome');
 });

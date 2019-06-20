@@ -24,18 +24,8 @@ class KatanasController extends Controller
     
     public function history()
     {
-        $data = [];
-        if (\Auth::check()) {
-            $user = \Auth::user();
-            $katanas = $user->katanas()->orderBy('created_at', 'desc')->paginate(10);
-            
-            $data = [
-                'user' => $user,
-                'katanas' => $katanas,
-            ];
-        }
         
-        return view('katanas.history', $data);
+        return view('katanas.history');
     }
     
     public function store(Request $request)

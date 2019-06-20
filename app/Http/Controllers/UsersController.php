@@ -10,6 +10,12 @@ use App\Katana;
 
 class UsersController extends Controller
 {
+    public function welcome()
+    {
+        return view('welcome');
+        
+    }
+    
     public function index()
     {
         $users = User::orderBy('id', 'desc')->paginate(10);
