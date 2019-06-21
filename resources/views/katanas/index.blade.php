@@ -15,7 +15,7 @@
                 @foreach ($katanas as $katana)
                 <tr>
                     <td>{{ $katana->user->name }}</td>
-                    <td>{!! link_to_route('katanas.show', $katana->name, ['日本刀名' => $katana->name]) !!}</td>
+                    <td>{!! link_to_route('katanas.show', $katana->name, ['id' => $katana->id]) !!}</td>
                 </tr>
                 @endforeach
             </tbody>

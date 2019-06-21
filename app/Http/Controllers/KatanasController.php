@@ -60,10 +60,12 @@ class KatanasController extends Controller
     public function show($id)
     {
         $katana = Katana::find($id);
+            
+            $data = [
+                'katana' => $katana,
+            ];
         
-        if (\Auth::id());
-        
-        return view('katanas.show');
+        return view('katanas.show', $data);
     }
     
     public function destroy($id)
