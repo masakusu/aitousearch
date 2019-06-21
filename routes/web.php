@@ -32,4 +32,5 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::get('history', 'KatanasController@history')->name('katanas.history');
     Route::get('/', 'UsersController@welcome');
+
 });

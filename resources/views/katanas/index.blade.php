@@ -3,7 +3,7 @@
 @section('content')
 
     <h1>日本刀一覧</h1>
-
+    
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -14,7 +14,7 @@
             <tbody>
                 @foreach ($katanas as $katana)
                 <tr>
-                    <td>{{ $katana->user }}</td>
+                    <td>{{ $katana->user->name }}</td>
                     <td>{!! link_to_route('katanas.show', $katana->name, ['日本刀名' => $katana->name]) !!}</td>
                 </tr>
                 @endforeach

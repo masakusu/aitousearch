@@ -57,6 +57,15 @@ class KatanasController extends Controller
         return redirect('/');
     }
     
+    public function show($id)
+    {
+        $katana = Katana::find($id);
+        
+        if (\Auth::id());
+        
+        return view('katanas.show');
+    }
+    
     public function destroy($id)
     {
         $katana = \App\Katana::find($id);

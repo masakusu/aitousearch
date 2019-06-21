@@ -17,4 +17,9 @@ class Katana extends Model
     {
         return $this->belongsToMany(User::class, 'favorites', 'user_id', 'katana_id')->withTimestamps();
     }
+    
+    public function katanas()
+    {
+        return $this->hasMany(Katana::class);
+    }
 }

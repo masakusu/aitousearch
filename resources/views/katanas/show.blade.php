@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <h1>name = {{ $katana->name }} の詳細ページ</h1>
+    @if (Auth::id())
+    <h1>{{ $katana->name }} の詳細ページ</h1>
 
     <table class="table table-bordered">
         <tr>
@@ -18,5 +18,5 @@
             <td>{{ $katana->content }}</td>
         </tr>
     </table>
-
+    @endif
 @endsection

@@ -16,7 +16,7 @@
             <tbody>
                 @foreach ($zatudans as $zatudan)
                 <tr>
-                    <td>{{ $zatudan->user }}</td>
+                    <td>{{ $zatudan->user->name }}</td>
                     <td>{{ $zatudan->content }}</td>
                     <td>@include('goods.goods_button', ['user' => $user])</td>
                 </tr>
