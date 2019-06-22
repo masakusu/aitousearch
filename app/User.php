@@ -67,9 +67,14 @@ class User extends Authenticatable
         }
     }
     
+    public function is_favorites($katanaId)
+    {
+        return $this->favorites()->where('katana_id', $katanaId)->exists();
+    }
+    
     public function goods()
     {
-        return $this->belongsToMany(Zatudan::class, 'favorites', 'user_id', 'zatudan_id')->withTimestamps();
+        return $this->belongsToMany(Zatudan::class, 'goods', 'user_id', 'zatudan_id')->withTimestamps();
     }
     
     public function good($zatudanId)
@@ -95,5 +100,10 @@ class User extends Authenticatable
         } else {
             return false;
         }
+    }
+    
+    public function is_goods($zatudanId)
+    {
+        return $this->goods()->where('zatudan_id', $zatudanId)->exists();
     }
 }

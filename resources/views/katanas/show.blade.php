@@ -17,6 +17,10 @@
             <th>エピソード</th>
             <td>{{ $katana->content }}</td>
         </tr>
+        <tr>
+            <th>愛刀判定</th>
+            <td>@include('favorites.favorites_button')</td>
+        </tr>
     </table>
-
+    
 @endsection
