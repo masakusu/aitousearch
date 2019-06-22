@@ -17,4 +17,9 @@ class Zatudan extends Model
     {
         return $this->belongsToMany(User::class, 'goods', 'user_id', 'zatudan_id')->withTimestamps();
     }
+    
+    public function zatudans()
+    {
+        return $this->hasMany(Zatudan::class);
+    }
 }

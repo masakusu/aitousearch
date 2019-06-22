@@ -106,4 +106,5 @@ class User extends Authenticatable
     {
         return $this->goods()->where('zatudan_id', $zatudanId)->exists();
     }
+    
 }

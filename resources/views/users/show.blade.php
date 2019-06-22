@@ -15,8 +15,6 @@
         <div class="col-sm-8">
             {!! link_to_route('users.favorites', '愛刀一覧', null, ['class' => 'btn btn-primary']) !!}
             {!! link_to_route('users.goods', 'いいねした雑談一覧', null, ['class' => 'btn btn-primary']) !!}
-            {!! link_to_route('zatudans.zatudans', '投稿した雑談の一覧', null, ['class' => 'btn btn-primary']) !!}
-            {!! link_to_route('katanas.katanas', '投稿した日本刀の一覧', null, ['class' => 'btn btn-primary']) !!}
         </div>
     </div>
 @endsection
