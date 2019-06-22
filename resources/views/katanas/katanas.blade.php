@@ -10,13 +10,13 @@
                 <div>
                     <p class="mb-0">{!! nl2br(e($katana->name)) !!}</p>
                 </div>
-            @include('favorites.favorites_button', ['user' => $user])
+            @include('favorites.favorites_button')
             </div>
-            
+            {!! link_to_route('katanas.edit', 'この日本刀を編集', ['name' => $katana->name], ['class' => 'btn btn-light']) !!}
         </li>
         
         @endforeach
     </ul>
-    {!! link_to_route('katanas.edit', 'この日本刀を編集', ['name' => $katana->name], ['class' => 'btn btn-light']) !!}
+    
 @endif 
 {{ $katanas->render('pagination::bootstrap-4') }}

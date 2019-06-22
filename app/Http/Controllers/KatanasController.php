@@ -30,6 +30,12 @@ class KatanasController extends Controller
         return view('katanas.history');
     }
     
+    public function katanas()
+    {
+        
+        return view('katanas.katanas');
+    }
+    
     public function create()
     {
         $katana = new Katana;

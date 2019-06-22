@@ -11,7 +11,7 @@
             {!! link_to_route('katanas.history', '日本刀の歴史', null, ['class' => 'btn btn-primary']) !!}
             {!! link_to_route('katanas.index', '日本刀一覧', null, ['class' => 'btn btn-primary']) !!}
             {!! link_to_route('zatudans.index', '雑談所', null, ['class' => 'btn btn-primary']) !!}
-            {!! link_to_route('users.index', 'マイプロフィール', null, ['class' => 'btn btn-primary']) !!}
+            {!! link_to_route('users.index', 'ユーザー', null, ['class' => 'btn btn-primary']) !!}
         </div>
     </div>
     @else

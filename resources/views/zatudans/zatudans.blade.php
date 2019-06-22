@@ -12,11 +12,11 @@
                 </div>
             @include('goods.goods_button', ['user' => $user])
             </div>
-            
+            {!! link_to_route('zatudans.edit', 'この雑談の編集', ['content' => $zatudan->content], ['class' => 'btn btn-light']) !!}
         </li>
         
         @endforeach
     </ul>
-    {!! link_to_route('zatudans.edit', 'この雑談の編集', ['content' => $zatudan->content], ['class' => 'btn btn-light']) !!}
+    
 @endif 
 {{ $zatudans->render('pagination::bootstrap-4') }}

@@ -24,6 +24,12 @@ class ZatudansController extends Controller
         return view('zatudans.index', $data);
     }
     
+    public function zatudans()
+    {
+        
+        return view('zatudans.zatudans');
+    }
+    
     public function create()
     {
         $zatudan = new Zatudan;
