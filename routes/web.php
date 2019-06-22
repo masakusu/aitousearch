@@ -27,7 +27,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('ungood', 'GoodsController@destroy')->name('goods.ungood');
     });
     
-    Route::resource('zatudans', 'ZatudansController', ['only' => ['index', 'zatudans','show', 'create', 'edit', 'store', 'destroy']]);
+    Route::resource('zatudans', 'ZatudansController', ['only' => ['index', 'zatudans','show', 'create', 'edit', 'store', 'update', 'destroy']]);
     Route::resource('katanas', 'KatanasController', ['only' => ['index', 'history', 'katanas', 'show', 'create', 'edit', 'store','update', 'destroy']]);
     
     Route::get('history', 'KatanasController@history')->name('katanas.history');

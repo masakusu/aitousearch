@@ -66,6 +66,33 @@ class ZatudansController extends Controller
         return redirect('/');
     }
     
+    public function edit($id)
+    {
+        $zatudan = Zatudan::find($id);
+        
+        if (\Auth::id() === $zatudan->user_id) {
+            return view('zatudans.edit', [
+            'zatudan' => $zatudan,
+        ]);
+        }
+        
+        return redirect('/');
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'content' => 'required|max:191',
+        ]);
+        
+        $zatudan = new Zatudan;
+        $zatudan->user_id = \Auth::user()->id;
+        $zatudan->content = $request->content;
+        $zatudan->save();
+
+        return redirect('/');
+    }
+    
     public function destroy($id)
     {
         $zatudan = \App\Zatudan::find($id);
