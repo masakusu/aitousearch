@@ -17,7 +17,7 @@
                 @foreach ($zatudans as $zatudan)
                 <tr>
                     <td>{{ $zatudan->user->name }}</td>
-                    <td>{{ $zatudan->content }}</td>
+                    <td>{!! link_to_route('zatudans.show', $zatudan->content,['id' => $zatudan->id]) !!}</td>
                     <td>@include('goods.goods_button', ['user' => $user])</td>
                 </tr>
                 @endforeach

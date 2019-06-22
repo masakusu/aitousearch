@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <h1>投稿した日本刀一覧</h1>
 
 @if (Auth::id() == $katana->user_id) 
@@ -14,9 +17,9 @@
             </div>
             {!! link_to_route('katanas.edit', 'この日本刀を編集', ['name' => $katana->name], ['class' => 'btn btn-light']) !!}
         </li>
-        
         @endforeach
     </ul>
     
 @endif 
 {{ $katanas->render('pagination::bootstrap-4') }}
+@endsection

@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<ul class="list-unstyled">
-    @foreach ($katanas as $katana)
+<h1>愛刀一覧</h1>
+@if (Auth::id() == $katana->user)
+    <ul class="list-unstyled">
+        @foreach ($katanas as $katana)
         <li class="media mb-3">
             <img class="mr-2 rounded" src="{{ Gravatar::src($katana->user->email, 50) }}" alt="">
             <div class="media-body">
@@ -15,7 +17,8 @@
                 @include('favorites.favorites_button', ['user' => $user])
             </div>
         </li>
-    @endforeach
-</ul>
+        @endforeach
+    </ul>
+@endif 
 {{ $katanas->render('pagination::bootstrap-4') }}
 @endsection

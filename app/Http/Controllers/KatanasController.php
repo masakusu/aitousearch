@@ -32,7 +32,6 @@ class KatanasController extends Controller
     
     public function katanas()
     {
-        
         return view('katanas.katanas');
     }
     
@@ -72,6 +71,37 @@ class KatanasController extends Controller
             ];
         
         return view('katanas.show', $data);
+    }
+    
+    public function edit($id)
+    {
+        $katana = Katana::find($id);
+        
+        if (\Auth::id() === $katana->user_id) {
+            return view('katanas.edit', [
+            'katana' => $katana,
+        ]);
+        }
+        
+        return redirect('/');
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:30',
+            'feature' => 'required|max:191',
+            'content' => 'required|max:191',
+        ]);
+        
+        $katana = new Katana;
+        $katana->user_id = \Auth::user()->id;
+        $katana->name = $request->name;
+        $katana->feature = $request->feature;
+        $katana->content = $request->content;
+        $katana->save();
+
+        return redirect('/');
     }
     
     public function destroy($id)
