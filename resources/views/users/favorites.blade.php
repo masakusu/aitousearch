@@ -12,7 +12,7 @@
                 <div>
                     @if (Auth::id() == $katana->user_id)
                         {!! Form::open(['route' => ['katanas.destroy', $katana->id], 'method' => 'delete']) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                            {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
                         {!! Form::close() !!}
                     @endif
                 </div>
