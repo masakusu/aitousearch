@@ -14,7 +14,7 @@
         </aside>
         <div class="col-sm-8">
             {!! link_to_route('users.favorites', '愛刀一覧', null, ['class' => 'btn btn-primary']) !!}
-            {!! link_to_route('users.goods', 'いいねした雑談一覧', null, ['class' => 'btn btn-primary']) !!}
+            {!! link_to_route('users.goods', 'いいねした雑談一覧', null, ['class' => 'btn btn-dark']) !!}
         </div>
     </div>
 @endsection
