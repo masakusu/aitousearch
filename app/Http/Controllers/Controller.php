@@ -24,4 +24,5 @@ class Controller extends BaseController
             'count_goods' => $count_goods,
         ];
     }
+    
 }

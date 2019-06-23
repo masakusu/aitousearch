@@ -9,14 +9,14 @@
                 <div>
                     {!! link_to_route('zatudans.show', $zatudan->content, ['id' => $zatudan->id]) !!} <span class="text-muted">posted at {{ $zatudan->created_at }}</span>
                 </div>
-                <div>
+                <div class="col-sm-4">
                     @if (Auth::id() == $zatudan->user_id)
                         {!! Form::open(['route' => ['zatudans.destroy', $zatudan->id], 'method' => 'delete']) !!}
                             {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
                         {!! Form::close() !!}
                     @endif
+                    @include('goods.goods_button')
                 </div>
-                @include('goods.goods_button')
             </div>
         </li>
         @endforeach

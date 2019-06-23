@@ -15,6 +15,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'users/{id}'], function () {
         Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
         Route::get('goods', 'UsersController@goods')->name('users.goods');
+        Route::delete('delete', 'UsersController@deleteData')->name('users.delete');
     });
 
     Route::group(['prefix' => 'katanas/{id}'], function () {

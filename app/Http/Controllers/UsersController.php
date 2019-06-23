@@ -41,7 +41,7 @@ class UsersController extends Controller
 
         $data = [
             'user' => $user,
-            'katanas' => $katanas,
+            'katanas' => $favorites,
         ];
 
         $data += $this->counts($user);
@@ -56,11 +56,19 @@ class UsersController extends Controller
 
         $data = [
             'user' => $user,
-            'zatudans' => $zatudans,
+            'zatudans' => $goods,
         ];
 
         $data += $this->counts($user);
 
         return view('users.goods', $data);
+    }
+    
+    public function deleteData(Request $request)
+    {
+        $user = User::find($request->input('id'));
+        if (\Auth::id() === $user) {
+            $user->delete();
+        }
     }
 }

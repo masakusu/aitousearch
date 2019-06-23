@@ -20,6 +20,7 @@
                 @endforeach
             </tbody>
         </table>
+  
         {!! link_to_route('katanas.create', '日本刀の投稿', null, ['class' => 'btn btn-primary']) !!}
 
 @endsection
