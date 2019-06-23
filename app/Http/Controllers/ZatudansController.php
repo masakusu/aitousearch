@@ -13,7 +13,7 @@ class ZatudansController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $zatudans = $user->zatudans()->orderBy('created_at', 'desc')->paginate(10);
+            $zatudans = Zatudan::where('id','>',0)->orderBy('created_at', 'desc')->paginate(10);
             
             $data = [
                 'user' => $user,

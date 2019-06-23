@@ -13,7 +13,7 @@ class KatanasController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $katanas = $user->katanas()->orderBy('created_at', 'desc')->paginate(10);
+            $katanas = Katana::where('id','>',0)->orderBy('created_at', 'desc')->paginate(10);
             
             $data = [
                 'user' => $user,

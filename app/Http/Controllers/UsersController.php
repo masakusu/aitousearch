@@ -64,11 +64,13 @@ class UsersController extends Controller
         return view('users.goods', $data);
     }
     
-    public function deleteData(Request $request)
+    public function deleteData($id)
     {
-        $user = User::find($request->input('id'));
-        if (\Auth::id() === $user) {
-            $user->delete();
-        }
+        $user = User::find($id);
+        $user->katanas()->delete();
+        $user->zatudans()->delete();
+        $user->delete();
+        return redirect('/logout');
     }
+    
 }
